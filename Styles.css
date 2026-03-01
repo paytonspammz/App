@@ -1,0 +1,152 @@
+:root{
+  --bg:#0b0b0c;
+  --panel:#121214;
+  --panel2:#16161a;
+  --text:#f2f2f7;
+  --muted:#9a9aa1;
+  --line:#232329;
+  --accent:#ffffff;
+  --good:#30d158;
+  --bad:#ff453a;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(255,255,255,.07), transparent 60%),
+              radial-gradient(1200px 800px at 90% 0%, rgba(255,255,255,.05), transparent 55%),
+              var(--bg);
+  color:var(--text);
+  font: 16px/1.35 -apple-system, BlinkMacSystemFont, "SF Pro Display","SF Pro Text", system-ui, sans-serif;
+}
+
+.app{max-width:860px;margin:0 auto;min-height:100%;display:flex;flex-direction:column}
+
+.topbar{
+  padding:16px 18px 10px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.title{font-weight:600;font-size:18px;letter-spacing:.2px}
+.chip{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  color:var(--text);
+  padding:8px 12px;border-radius:999px;
+}
+
+.content{padding:0 14px 90px}
+.screen{display:none;gap:14px}
+.screen.active{display:flex;flex-direction:column}
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+.card.big{padding:22px; text-align:center}
+.label{color:var(--muted);font-size:13px;letter-spacing:.2px;margin-bottom:10px}
+.balance{
+  font-size:58px;
+  font-weight:700;
+  letter-spacing:-1px;
+  line-height:1;
+}
+.subtle{color:var(--muted);font-size:13px;margin-top:6px}
+
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{font-size:28px;font-weight:650;letter-spacing:-.5px}
+.stat.good{color:var(--good)}
+.stat.bad{color:var(--bad)}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:12px;
+}
+.tile{
+  padding:14px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.035);
+  display:flex;flex-direction:column;gap:8px;
+  min-height:84px;
+}
+.tile .name{font-weight:600;letter-spacing:.2px}
+.tile .meta{color:var(--muted);font-size:13px}
+.tile .actions{margin-top:auto;display:flex;gap:10px}
+.btn{
+  width:100%;
+  border:0;
+  background: rgba(255,255,255,.10);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  font-weight:600;
+}
+.btn:active{transform:scale(.99)}
+.btn.secondary{background:rgba(255,255,255,.06)}
+.btn.danger{background:rgba(255,69,58,.18);border:1px solid rgba(255,69,58,.35)}
+
+.form{display:flex;gap:10px;flex-wrap:wrap}
+input{
+  flex:1;
+  min-width:160px;
+  padding:12px 12px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  outline:none;
+}
+input::placeholder{color:#7c7c84}
+
+.list{display:flex;flex-direction:column;gap:10px}
+.item{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+}
+.item .left{display:flex;flex-direction:column;gap:4px}
+.item .right{display:flex;align-items:center;gap:10px}
+.item .small{color:var(--muted);font-size:12px}
+.pill{
+  padding:6px 10px;border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  font-size:12px;color:var(--text);
+  white-space:nowrap;
+}
+.pill.good{border-color:rgba(48,209,88,.35);background:rgba(48,209,88,.12)}
+.pill.bad{border-color:rgba(255,69,58,.35);background:rgba(255,69,58,.12)}
+
+.tabbar{
+  position:fixed;left:0;right:0;bottom:0;
+  padding:10px 10px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(10,10,12,.72);
+  backdrop-filter: blur(18px);
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-around;gap:8px;
+}
+.tab{
+  border:0;background:transparent;color:var(--muted);
+  padding:10px 10px;border-radius:12px;font-weight:650;font-size:13px;
+}
+.tab.active{color:var(--text);background:rgba(255,255,255,.06)}
+
+.toast{
+  position:fixed;left:50%;bottom:86px;transform:translateX(-50%);
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(14px);
+  color:var(--text);
+  padding:10px 12px;border-radius:999px;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.toast.show{opacity:1}
